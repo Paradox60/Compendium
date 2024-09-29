@@ -1,20 +1,33 @@
-import this
+from decorators import *
+from dataType import *
 
-from middle import *
+# ----------------------------------Типы данных----------------------------------------------------
 
-def print_main():
-    print('Не основной файл')
-# Press the green button in the gutter to run the script.
+
 if __name__ == '__main__':
-    print_on()
+    print(a)
 
 
-class Cat:
-    def where_am_i(self):
-        print(self)
 
-Tom = Cat()
-Tom.where_am_i()
-Catty = Cat()
-Catty.where_am_i()
-print(Tom>Catty)
+
+
+# ----------------------------------Работа с декораторами---------------------------------
+word="СлоВо"
+
+def print_original(word):
+    print(word)
+
+# Используем декоратор для изменения поведения функции
+@to_uppercase_decorator
+def print_uppercase(word):
+    print(word)
+
+@to_lowercase_decorator
+def print_lowercase(word):
+    print(word)
+
+
+
+
+
+
