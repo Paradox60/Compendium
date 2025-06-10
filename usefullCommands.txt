@@ -1,0 +1,78 @@
+-----------------------------------------------------------Python--------------------------------------------------------------------
+
+1. Virual envarinment
+- python3 -m venv venv
+
+
+----------------------------------------------------------Ubuntu--------------------------------------------------------------------
+
+nano ~/.bashrc   file with configurations
+
+-----------------------------SSH----------------------------
+
+ssh-tunel:
+
+ssh -f -N -L 5050:localhost:5050 cnc_postgre@217.146.67.129
+    -f — в фоне
+    -N — не выполнять команд на сервере
+
+функция для коннекта в /.bashrc:
+
+pg_conn() {
+  echo "Открываю SSH-туннель..."
+  echo "1 — PostgreSQL (5433 ➝ 5432)"
+  echo "2 — PgAdmin (5050 ➝ 5050)"
+  read -p "Выбери [1/2]: " opt
+  if [[ $opt == "1" ]]; then
+    ssh -f -N -L 5433:localhost:5432 cnc_postgre@217.146.67.129
+  elif [[ $opt == "2" ]]; then
+    ssh -f -N -L 5050:localhost:5050 cnc_postgre@217.146.67.129
+  else
+    echo "Неверный выбор"
+  fi
+}
+
+функция для проверки соединения и закрытия в /.bashrc
+
+pg_status() {
+  echo "🔍 Проверка SSH-туннелей PostgreSQL/PgAdmin..."
+  
+  local ports=("5433" "5050")
+  local tunnel_found=0
+  local pids=()
+
+  for port in "${ports[@]}"; do
+    if lsof -i TCP:$port -sTCP:LISTEN -n >/dev/null 2>&1; then
+      echo "✅ Порт $port — слушает (туннель активен)"
+      tunnel_found=1
+    else
+      echo "❌ Порт $port — не слушает"
+    fi
+  done
+
+  echo
+  echo "📡 Активные SSH-туннели:"
+  ps_out=$(ps aux | grep "[s]sh.*-L" | grep -E "5433|5050")
+  if [[ -n "$ps_out" ]]; then
+    echo "$ps_out"
+    echo
+
+    # Сохраним PID процессов
+    while read -r line; do
+      pid=$(echo "$line" | awk '{print $2}')
+      pids+=("$pid")
+    done <<< "$ps_out"
+
+    read -p "❓ Завершить эти SSH-соединения? [y/N]: " answer
+    if [[ "$answer" == [Yy] ]]; then
+      for pid in "${pids[@]}"; do
+        kill "$pid" && echo "⛔️ Завершено соединение PID $pid"
+      done
+    else
+      echo "✅ Соединения оставлены без изменений."
+    fi
+  else
+    echo "🟢 Нет активных SSH-туннелей на портах 5433 или 5050."
+  fi
+}
+
