@@ -1,0 +1,9 @@
+Установка docker compose:
+1. sudo snap docker compose
+
+Полезные команды:
+____________________________________________________________
+
+docker-compose up -d запуск в фоне
+docker compose down --remove-orphans (удаление всех контейнеров)
+restart: unless-stopped в файле docker-composer.yml для перезапуска контейнера после ребута сервера

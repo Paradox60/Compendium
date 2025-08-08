@@ -1,0 +1,98 @@
+Создание докер контейнера для Django
+_____________________________________
+
+1. Создать в папке проекта файл "Dockerfile"
+  1.1 Наполнить файл содержимым:
+  
+# Dockerfile
+FROM python:3.12-slim
+  
+# Установка зависимостей системы
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+  
+# Установка рабочей директории
+WORKDIR /app
+  
+# Копируем файлы проекта
+COPY requirements.txt /app/
+  
+# Устанавливаем зависимости Python
+RUN pip install --no-cache-dir -r requirements.txt
+  
+# Копируем остальную часть проекта
+COPY . /app/
+  
+# Открываем порт
+EXPOSE 8000
+  
+# Команда по умолчанию
+CMD ["gunicorn", "cnc_wisdom.wsgi:application", "--bind", "0.0.0.0:8000"]
+
+2. Создать в папку проекта файл "docker-compose.yml"  
+  2.1 Наполнить файл содржимым:
+
+# docker-compose.yml
+  
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - db
+  
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: cncwisdom
+      POSTGRES_USER: cncuser
+      POSTGRES_PASSWORD: cncpwd
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  
+volumes:
+  postgres_data:
+
+3. Создать в папку проекта файл "requirments.txt":
+  3.1 Наполнить файл содержимым:
+  
+Django>=5.0,<6.0
+gunicorn
+psycopg2-binary
+
+4. Создать в папке проекта файл ".env"
+  4.1 Наполнить файл содержимым:
+
+DEBUG=1
+SECRET_KEY=your-secret-key
+DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+
+5. Создать Django-проект внутри Docker:
+docker-compose run web django-admin startproject cnc_wisdom .
+	    
+6. Запуск:
+docker-compose up --build
+
+
+После выгрузки последней версии:
+______________________________________
+
+git pull
+docker-compose down
+docker-compose up --build
+
+Инициализация git репозитория:
+______________________________________
+
+git init
+echo -e "venv/\n__pycache__/\n*.pyc\n*.sqlite3\n.env\n.env.*\n.docker\n*.log" > .gitignore
+git add .
+git commit -m "initial dockerized Django project"
+   
