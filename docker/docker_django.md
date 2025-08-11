@@ -1,9 +1,13 @@
-Создание докер контейнера для Django
-_____________________________________
+# <center><span style="color:blue">Создание докер контейнера для Django</span></center>
+---
+<br>
 
-1. Создать в папке проекта файл "Dockerfile"
-  1.1 Наполнить файл содержимым:
-  
+### 1. Создать папку проекта project_folder
+
+### 2. Создать в папке проекта файл "Dockerfile"
+  *Наполнить файл содержимым:*
+
+```text  
 # Dockerfile
 FROM python:3.12-slim
   
@@ -27,13 +31,14 @@ COPY . /app/
   
 # Открываем порт
 EXPOSE 8000
-  
+
 # Команда по умолчанию
 CMD ["gunicorn", "cnc_wisdom.wsgi:application", "--bind", "0.0.0.0:8000"]
+```
 
-2. Создать в папку проекта файл "docker-compose.yml"  
-  2.1 Наполнить файл содржимым:
-
+### 3. Создать в папку проекта файл "docker-compose.yml"  
+  *Наполнить файл содржимым:*
+```yml
 # docker-compose.yml
   
 services:
@@ -59,40 +64,45 @@ services:
   
 volumes:
   postgres_data:
+```
 
-3. Создать в папку проекта файл "requirments.txt":
-  3.1 Наполнить файл содержимым:
-  
+### 4. Создать в папку проекта файл "requirments.txt":
+  *Наполнить файл содержимым:*
+```text  
 Django>=5.0,<6.0
 gunicorn
 psycopg2-binary
+```
 
-4. Создать в папке проекта файл ".env"
-  4.1 Наполнить файл содержимым:
-
+### 5. Создать в папке проекта файл ".env"
+  *Наполнить файл содержимым:*
+```text
 DEBUG=1
 SECRET_KEY=your-secret-key
 DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+```
 
-5. Создать Django-проект внутри Docker:
+### 6. Создать Django-проект внутри Docker:
+```bash
 docker-compose run web django-admin startproject cnc_wisdom .
-	    
-6. Запуск:
+```
+
+### 7. Запуск:
+```bash
 docker-compose up --build
+```
 
+#### После выгрузки последней версии:
+---
+- git pull
+- docker-compose down
+- docker-compose up --build
 
-После выгрузки последней версии:
-______________________________________
+#### Инициализация git репозитория:
+---
 
-git pull
-docker-compose down
-docker-compose up --build
-
-Инициализация git репозитория:
-______________________________________
-
-git init
-echo -e "venv/\n__pycache__/\n*.pyc\n*.sqlite3\n.env\n.env.*\n.docker\n*.log" > .gitignore
-git add .
-git commit -m "initial dockerized Django project"
+- git init
+- echo -e "venv/\n__pycache__/\n*.pyc\n*.sqlite3\n.env\n.env.*\n.docker\n*.log" > .gitignore
+- git add .
+- git commit -m "initial dockerized Django project"
    

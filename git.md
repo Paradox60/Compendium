@@ -1,25 +1,31 @@
-git init
-git status
-git remote add origin git$serv:git/your_project.git
-git remote -v
-git push
-git pull
-git add
-git commit -m "Your commit"
-git config --global user.name "Your_name"
-git config --global user.email "Your_e-mail"
-git branch -m main 
+# Команды для git
+---
 
-Cоздание голового репозитория на сервере:
-____________________________________________
+- ### git init
+- ### git status
+- ### git remote add origin git$serv:git/your_project.git
+- ### git remote -v
+- ### git push
+- ### git pull
+- ### git add
+- ### git commit -m "Your commit"
+- ### git config --global user.name "Your_name"
+- ### git config --global user.email "Your_e-mail"
+- ### git branch -m main 
 
-mkdir repository.git
-cd repository.git
-git init --bare
+# Cоздание голового репозитория на сервере:
+---
+
+- ### mkdir repository.git
+- ### cd repository.git
+- ### git init --bare
 
 
-Универсальный .gitignore:
-____________________________________________
+# Универсальный .gitignore:
+---
+
+```python
+______
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -104,4 +110,4 @@ staticfiles/
 
 # Articles or generated content
 content/__pycache__/
-
+```
