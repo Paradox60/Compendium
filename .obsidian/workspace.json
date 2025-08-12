@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "linux.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "linux"
             }
           }
         ]
@@ -173,9 +173,11 @@
   },
   "active": "9ce23be91096544b",
   "lastOpenFiles": [
+    "index.md",
+    "linux.md",
+    "windows.md",
     "bashrc_ps1/pad_go.sh",
     "hotkeys/gigaide_h.md",
-    "index.md",
     "hotkeys/sublime_h.md",
     "pep8.md",
     "algorithms.md",

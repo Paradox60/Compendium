@@ -37,7 +37,11 @@
 	- [PEP8](pep8.md)
 	- [Algorithms](algorithms.md)
 
+- #### ***Операционные системы***
 
+	- [Windows](windows.md)
+	- [Linux](linux.md)
+	
 ## 📚 **Учебники**
 
 - #### ***Python***
