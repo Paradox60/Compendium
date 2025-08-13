@@ -5,6 +5,8 @@
 - ### git status
 - ### git remote add origin git$serv:git/your_project.git
 - ### git remote -v
+- ### git remote set-url --add --push origin git.....
+
 - ### git push
 - ### git pull
 - ### git add
