@@ -20,7 +20,6 @@ COPY ./$project_name /app
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
 ```
 
 ### 3. Создать docker-compose.yml и наполнить:
@@ -31,10 +30,15 @@ services:
     build: .
     ports:
       - "5000:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
     volumes:
       - ./$project_name:/app
     env_file:
       - .env
+    command: flask run --host=0.0.0.0 --reload
 ```      
 
 ### 4. Создать requirement.txt и наполнить:

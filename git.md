@@ -14,6 +14,7 @@
 - ### git config --global user.name "Your_name"
 - ### git config --global user.email "Your_e-mail"
 - ### git branch -m main 
+- ### git rm -r --cached folder/ (рекурсивное удаление файла из всего репозитория) 
 
 # Cоздание голового репозитория на сервере:
 ---
@@ -100,6 +101,7 @@ dist/
 
 # Markdown cache or temp files
 *.md~
+.obsidian/
 
 # Temporary files
 *.swp
@@ -112,4 +114,9 @@ staticfiles/
 
 # Articles or generated content
 content/__pycache__/
+
+# Sublime files
+*.sublime-workspace
 ```
+
+

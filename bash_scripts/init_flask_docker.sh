@@ -24,8 +24,6 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
 EOF
 
 # 4. Создаём requirements.txt
@@ -80,7 +78,6 @@ COPY ./$project_name /app
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
 EOF
 
 # 8. docker-compose.yml (без версии!)
@@ -90,10 +87,15 @@ services:
     build: .
     ports:
       - "5000:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
     volumes:
       - ./$project_name:/app
     env_file:
       - .env
+    command: flask run --host=0.0.0.0 --reload
 EOF
 
 # 9. .env
