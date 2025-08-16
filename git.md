@@ -3,9 +3,11 @@
 
 - ### git init
 - ### git status
-- ### git remote add origin git$serv:git/your_project.git
 - ### git remote -v
-- ### git remote set-url --add --push origin git.....
+- ### git remote add origin git$serv:git/your_project.git
+- ### git remote set-url --add --push origin git@adress
+- ### git rm -r --cached folder/ (рекурсивное удаление файла из всего репозитория)
+- ### rm -rf .git/modules/module_name (удаление данных о модуле из git)
 
 - ### git push
 - ### git pull
@@ -14,7 +16,7 @@
 - ### git config --global user.name "Your_name"
 - ### git config --global user.email "Your_e-mail"
 - ### git branch -m main 
-- ### git rm -r --cached folder/ (рекурсивное удаление файла из всего репозитория) 
+ 
 
 # Cоздание голового репозитория на сервере:
 ---

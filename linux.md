@@ -1,3 +1,13 @@
+# <center>Сделать скрипт исполняемым</center>
+---
+```bash
+chmod +x script_name.sh
+```
+*запуск скрипта*
+```bash
+./script_name.sh
+```
+
 # <center>Генерация ssh ключа</center>
 ---
 ```bash
