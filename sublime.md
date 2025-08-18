@@ -38,6 +38,10 @@ macOS:
 
 - #### *Jinja2* → подсветка синтаксиса в Flask/Django/FastAPI-шаблонах.
 - #### *Emmet* → быстрое написание HTML/CSS (например: div.container>ul>li\*5 → разворачивается в готовый код).
+**https://habr.com/ru/articles/668476/**
+**https://docs.emmet.io/cheat-sheet/**
+
+- #### *ColorHelper* даёт выбор цвета как в IDE
 
 ## Не использовал
 - #### *Requester* → прямо из Sublime можно тестировать HTTP-запросы (как мини Postman).
