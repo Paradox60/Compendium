@@ -22,3 +22,11 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocola
 ```shell
 choco install html-tidy
 ```
+Установка линтеров:
+```shell
+choco install html-tidy -y
+```
+```shell
+npm install -g stylelint
+```
+

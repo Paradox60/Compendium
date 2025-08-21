@@ -51,6 +51,6 @@ macOS:
     ```bash
     sudo apt install tidy
     ```
-
+(установка для виндовс смотри в разделе Windows)
 ## Не использовал
 - #### *Requester* → прямо из Sublime можно тестировать HTTP-запросы (как мини Postman).
