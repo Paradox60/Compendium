@@ -42,6 +42,15 @@ macOS:
 **https://docs.emmet.io/cheat-sheet/**
 
 - #### *ColorHelper* даёт выбор цвета как в IDE
+<br>
+
+- ### Набор для html:
+    - #### *Sublimelinter*
+    - #### *SublimeLinter-html-tidy*
+    - #### *Tidy* ставиться как отдельная утилита 
+    ```bash
+    sudo apt install tidy
+    ```
 
 ## Не использовал
 - #### *Requester* → прямо из Sublime можно тестировать HTTP-запросы (как мини Postman).

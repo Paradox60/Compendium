@@ -3,7 +3,7 @@
 ## 🎨 CSS
 
 ### Box model и позиционирование:
-  - ##### [ ]  *position: relative / absolute / fixed / sticky*
+  - ##### [ x ]  *position: relative / absolute / fixed / sticky*
   - ##### [ ] *как работает z-index*
   - ##### [ ] *отличие inline, block, inline-block*
 
@@ -27,3 +27,4 @@
 - ### [display: flex](CSS/flex.md)
 - ### [display: grid](CSS/grid.md)
 - ### [position](CSS/position.md)
+- ### [inline/block/inline-block](CSS/inline.md)
