@@ -3,9 +3,9 @@
 ## 🎨 CSS
 
 ### Box model и позиционирование:
-  - ##### [ x ]  *position: relative / absolute / fixed / sticky*
+  - [x] *position: relative / absolute / fixed / sticky*
   - ##### [ ] *как работает z-index*
-  - ##### [ ] *отличие inline, block, inline-block*
+  - [x] *отличие inline, block, inline-block*
 
 ### Адаптивность:
   - ##### [ ] *@media queries (разные ширины экрана)*
