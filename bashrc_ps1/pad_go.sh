@@ -9,8 +9,15 @@ pg_conn() {
   echo "Открываю SSH-туннель..."
   echo "1 — PostgreSQL (5433 ➝ 5432)"
   read -p "Выбери [1]: " opt
+  
   if [[ $opt == "1" ]]; then
+    # Закрываем все SSH-процессы с портом 5433
+    pkill -f "ssh.*-L.*:5433:localhost:5432"
+    sleep 1
+    
+    # Создаем новое соединение
     ssh -f -N -L 0.0.0.0:5433:localhost:5432 cnc_postgre@217.146.67.129
+    echo "SSH-туннель успешно создан"
   else
     echo "Неверный выбор"
   fi
