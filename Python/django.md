@@ -13,9 +13,13 @@ python manage.py runserver
 python manage.py startapp myapp
 ```
 
-### Запуск созданеие миграция
+### Созданеие миграция
 ```bash
 python manage.py makemigrations
+```
+### Применение миграций
+```bash
+python manage.py migrate
 ```
 
 ### Показать изменения миграций
