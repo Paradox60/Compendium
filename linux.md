@@ -1,3 +1,8 @@
+# <center>Разблокировать папку</center>
+```bash
+sudo chown -R $USER:$USER app01_blog
+```
+
 # <center>Сделать скрипт исполняемым</center>
 ---
 ```bash
@@ -169,8 +174,3 @@ sudo openssl req -new -x509 -days 365 -nodes -out /etc/stunnel/stunnel.pem -keyo
 
     	Проверьте firewall (sudo ufw allow 443).
     	Убедитесь, что stunnel запущен (sudo systemctl status stunnel4).
-
-# Разблокировать папку 
-```bash
-sudo chown -R $USER:$USER app01_blog
-```
