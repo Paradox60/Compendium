@@ -1,4 +1,5 @@
 # JS в CSS
+  - [Методы document.](Js/doc_meth.md)
   - [Модификация стилей](Js/style_toggle.md)
 
 # React Native 
