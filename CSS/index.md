@@ -23,6 +23,8 @@
 - ### [Минимаьлный ресет для сайта](CSS/reset.md)
 - ### [Селекторы](CSS/selectors.md) 
 - ### [Работа с текстом](CSS/text.md)
+- ### [Рисование с помощью Clip-path](CSS/clip-path.md)
+- ### [Рисование с помощью SVG](CSS/svg.md)
 ## Display:
 - ### [display: flex](CSS/flex.md)
 - ### [display: grid](CSS/grid.md)
