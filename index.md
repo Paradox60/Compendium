@@ -25,6 +25,7 @@
 	- [git](git.md)
 	- [sublime text](sublime.md)
 	- [docker](docker/docker.md)
+	- [VPN](VPN/index.md)
 
 - #### ***Горячие клавиши***
 
