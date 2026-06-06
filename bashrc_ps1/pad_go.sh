@@ -7,19 +7,40 @@
 
 pg_conn() {
   echo "Открываю SSH-туннель..."
-  echo "1 — PostgreSQL (5433 ➝ 5432)"
+  echo "1 — Test_cnc (5433 ➝ 5433)"
+  echo "2 — Prod_cnc (5433 ➝ 5432)"
   read -p "Выбери [1]: " opt
   
+  opt=${opt:-1}
+  
   if [[ $opt == "1" ]]; then
-    # Закрываем все SSH-процессы с портом 5433
-    pkill -f "ssh.*-L.*:5433:localhost:5432"
+    pkill -f "ssh.*-L.*:5433:localhost:5433" 2>/dev/null
     sleep 1
-    
-    # Создаем новое соединение
-    ssh -f -N -L 0.0.0.0:5433:localhost:5432 cnc_postgre@217.146.67.129
-    echo "SSH-туннель успешно создан"
+    ssh -f -N -L 0.0.0.0:5433:localhost:5433 cnc_postgre@217.146.67.129 -p 12555
+    echo "✅ SSH-туннель для Test_cnc создан"
+  elif [[ $opt == "2" ]]; then
+    pkill -f "ssh.*-L.*:5433:localhost:5432" 2>/dev/null
+    sleep 1
+    ssh -f -N -L 0.0.0.0:5433:localhost:5432 cnc_postgre@217.146.67.129 -p 12555
+    echo "✅ SSH-туннель для Prod_cnc создан"
   else
-    echo "Неверный выбор"
+    echo "❌ Неверный выбор"
+    return 1
+  fi
+  
+  # Пауза, чтобы туннель успел создаться
+  sleep 2
+  
+  # Проверка через lsof (более надёжная)
+  if lsof -i :5433 >/dev/null 2>&1; then
+    echo "✅ Проверка: порт 5433 успешно слушает"
+  else
+    # Альтернативная проверка через ss
+    if ss -tlnp 2>/dev/null | grep -q ":5433"; then
+      echo "✅ Проверка: порт 5433 успешно слушает"
+    else
+      echo "⚠️ Проверка: порт 5433 не обнаружен, но возможно туннель создаётся..."
+    fi
   fi
 }
 

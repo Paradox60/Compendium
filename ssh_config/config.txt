@@ -1,0 +1,11 @@
+Host serv
+	HostName 217.146.67.129
+	Port 12555
+	User ubuntu
+    ServerAliveInterval 30
+    ServerAliveCountMax 3
+    
+Host mygit
+    HostName uvn-67-129.tll01.zonevs.eu
+    User git
+    Port 12555
