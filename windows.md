@@ -30,3 +30,13 @@ choco install html-tidy -y
 npm install -g stylelint
 ```
 
+# <center>🚀 Настройк ssh</center>
+```shell
+cd .ssh
+micro config
+```
+
+# <center>🚀 Аналог bashrc</center>
+```shell
+$PROFILE
+```
